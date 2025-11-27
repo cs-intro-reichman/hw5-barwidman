@@ -32,11 +32,8 @@ public class Wordle {
     // Hint: Pick a random index between 0 and dict.length (not including) using Math.random()
     public static String chooseSecretWord(String[] dict) {
 		// ...
-        if (dict.length == 1) {
-            return dict[0];
-        }
-        // This odd manipulation is to make sure the length itself, and 0 aren't chosen.
-        int randomIndex = (int)(Math.random() * (dict.length -1)) + 1;
+        // This odd manipulation is to make sure the length itself is not chosen.
+        int randomIndex = (int)(Math.random() * (dict.length -1));
         return dict[randomIndex];
     }
 
