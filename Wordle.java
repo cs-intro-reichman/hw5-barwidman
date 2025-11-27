@@ -8,13 +8,14 @@ public class Wordle {
             String s = in.readLine();
             countLines++;
         }
+        in.close();
         return countLines;
     }
     // Reads all words from dictionary filename into a String array.
     public static String[] readDictionary(String filename) {
 		// ...
         int countLines = getNumLinesInFile(filename);
-        String[] wordsArr = new  String[countLines];
+        String[] wordsArr = new String[countLines];
         In in = new In(filename);
         int currentIndex = 0;
         while (!in.isEmpty() && currentIndex < wordsArr.length) {
@@ -22,6 +23,7 @@ public class Wordle {
             wordsArr[currentIndex] = s;
             currentIndex++;
         }
+        in.close();
 
         return wordsArr;
     }
@@ -30,6 +32,9 @@ public class Wordle {
     // Hint: Pick a random index between 0 and dict.length (not including) using Math.random()
     public static String chooseSecretWord(String[] dict) {
 		// ...
+        if (dict.length == 1) {
+            return dict[0];
+        }
         // This odd manipulation is to make sure the length itself, and 0 aren't chosen.
         int randomIndex = (int)(Math.random() * (dict.length -1)) + 1;
         return dict[randomIndex];
